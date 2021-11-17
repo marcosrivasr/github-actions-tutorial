@@ -8,3 +8,8 @@ test('a + 5 = NaN', () =>{
     expect(suma('a',5)).toBe(NaN);
 });
 
+test('10 + 5 = 15', () =>{
+    expect(suma(10,5)).toBe(15);
+});
+
+
