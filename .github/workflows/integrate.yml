@@ -1,0 +1,19 @@
+name: integracion continua con node.js #nombre de la accion
+
+on: #acciona el flujo de trabajo
+  pull_request: #acciona cuando hay un pull_request 
+    branches: [ master ] #en esta rama
+
+jobs: #Lo que hara cuando se active
+  ci_to_master: #el nombre del trabajo  
+    runs-on: ubuntu-latest #Bajo que sistema operativo se creara la 'maquina virtual'
+    steps: #los pasos a seguir
+      #importan github actions
+      - uses: actions/checkout@v2 
+      - uses: actions/setup-node@v1
+        with: 
+          node-version: 10 #se especifica la version de nodejs
+      #estos son los comando que se ejecutan para probar el codigo, 
+      - run: npm ci #instalacion limpia
+      - run: npm test #Validaciones de las funcion de suma
+      - run: npm run build #correr la funcion
